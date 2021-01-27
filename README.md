@@ -2,9 +2,11 @@
 
 This is an application to show a distance between two airports. User should type IATA code of the airports and then the app will show the distance measured in miles.
 
-## How it works
+## How it works (gif)
 
 ![gif](airports.gif)
+
+You may click on the gif above to open it in a new tab with a high quality.
 
 ## How to start the app:
 
