@@ -1,5 +1,5 @@
 export default class Assertion {
-    public static notNull<T>(anyInstance: T, paramName: string, className: string = null): void {
+    public static notNull<T>(anyInstance: T, paramName: string, className?: string): void {
       if (anyInstance == null) {
         let message = `Parameter '${paramName}' should not be null`;
   

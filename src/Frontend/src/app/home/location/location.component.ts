@@ -8,5 +8,5 @@ import { MapLocation } from 'src/app/models/map-location';
 })
 export class LocationComponent {
   @Input()
-  location: MapLocation;
+  location: MapLocation | null = null;
 }

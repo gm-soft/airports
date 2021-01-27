@@ -8,5 +8,5 @@ import { Airport } from 'src/app/models/airport';
 })
 export class AirportComponent {
   @Input()
-  airport: Airport;
+  airport: Airport | null = null;
 }

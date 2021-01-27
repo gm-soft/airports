@@ -12,10 +12,10 @@ export class HomeComponent {
 
   form: AirportByIataForm;
 
-  get firstAirport(): Airport { return this.difference?.first; }
-  get secondAirport(): Airport { return this.difference?.second; }
+  get firstAirport(): Airport | null { return this.difference?.first ?? null; }
+  get secondAirport(): Airport | null { return this.difference?.second ?? null; }
 
-  difference: DifferenceResponse;
+  difference: DifferenceResponse | null = null;
 
   constructor(service: AirportsService) {
     this.form = new AirportByIataForm(service);
