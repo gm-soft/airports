@@ -23,8 +23,12 @@ namespace Airports.WebHost.Domain.Airports
 
         public async Task<DifferenceResponse> DifferenceAsync(DifferenceBetweenAirportsRequest request)
         {
-            Airport first = await ByCodeAsync(request.First);
-            Airport second = await ByCodeAsync(request.Second);
+            var firstCode = request.First.ToUpper();
+            var secondCode = request.Second.ToUpper();
+
+            Airport first = await ByCodeAsync(firstCode);
+
+            Airport second = firstCode != secondCode ? await ByCodeAsync(secondCode) : first;
 
             return new DifferenceResponse(first, second);
         }

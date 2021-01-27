@@ -12,4 +12,4 @@ Please find attached the test assignment and the assessment criteria below:
 ## How to start the app:
 
 1. Execute `run.ps1` script
-2. Open SPA via [http://localhost:8080](http://localhost:8080)
+2. Open SPA via [http://localhost:4200](http://localhost:4200)

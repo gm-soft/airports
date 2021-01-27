@@ -11,8 +11,8 @@ export class AirportByIataForm extends FormGroup {
 
     constructor(airportsService: AirportsService) {
         super({
-            first: new FormControl(null, [Validators.required]),
-            second: new FormControl(null, [Validators.required])
+            first: new FormControl(null, [Validators.required, Validators.maxLength(3), Validators.minLength(3)]),
+            second: new FormControl(null, [Validators.required, Validators.maxLength(3), Validators.minLength(3)])
         });
         Assertion.notNull(airportsService, 'airportsService');
         this.airportsService = airportsService;
