@@ -24,14 +24,15 @@ namespace Airports.WebHost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddHttpClient(AirportExternalApi.CTeleport, x =>
+            services.AddHttpClient(TeleportApi.CTeleport, x =>
             {
                 x.BaseAddress = new Uri(Configuration.GetSection("Api")["AirportApiUrl"]
                                         ?? throw new ArgumentException("There is no url for airports api"));
             });
 
             services
-                .AddScoped<IAirports, AirportExternalApi>();
+                .AddScoped<IApi, TeleportApi>()
+                .AddScoped<IAirportService, AirportService>();
 
             services.AddCors(options =>
             {
