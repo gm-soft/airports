@@ -2,7 +2,7 @@
 using Airports.WebHost.Domain.ValueObjects;
 using Newtonsoft.Json;
 
-namespace Airports.WebHost.Domain.Infrastructure
+namespace Airports.WebHost.Domain.Airports.Dtos
 {
     public class AirportResponse
     {

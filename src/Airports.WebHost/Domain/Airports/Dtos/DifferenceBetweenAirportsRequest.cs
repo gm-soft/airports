@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Airports.WebHost.Controllers
+namespace Airports.WebHost.Domain.Airports.Dtos
 {
     public class DifferenceBetweenAirportsRequest
     {

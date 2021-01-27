@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Airports.WebHost.Domain.Airports;
+using Airports.WebHost.Domain.Airports.Dtos;
 using Airports.WebHost.Domain.Infrastructure;
 using Airports.WebHost.Domain.Models;
 using Airports.WebHost.Domain.ValueObjects;
@@ -23,7 +25,7 @@ namespace Airports.WebHost.Controllers
         public Task<Airport> GetAsync(string code) => _airports.ByCodeAsync(code);
 
         [HttpPost("difference")]
-        public Task<Difference> DifferenceAsync([FromBody] DifferenceBetweenAirportsRequest request)
+        public Task<DifferenceResponse> DifferenceAsync([FromBody] DifferenceBetweenAirportsRequest request)
             => _airports.DifferenceAsync(request);
     }
 }

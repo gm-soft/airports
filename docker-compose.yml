@@ -1,16 +1,14 @@
 version: "3.4"
 
 networks:
-  tp-network:
+  airports-network:
     driver: bridge
 
 services:
   backend:
-    container_name: tp-backend
-    image: tp/backend
+    container_name: airports-backend
+    image: airports/backend
     restart: unless-stopped
-    depends_on:
-      - mongo
     build:
       context: ./src
       dockerfile: Dockerfile
@@ -23,13 +21,13 @@ services:
     ports:
       - 5001:5001
     networks:
-      - tp-network
+      - airports-network
     volumes:
       - ~/.aspnet/https:/https:ro
   
   frontend:
-    container_name: tp-frontend
-    image: tp/frontend
+    container_name: airports-frontend
+    image: airports/frontend
     depends_on:
       - backend
     build:
@@ -38,4 +36,4 @@ services:
     ports:
       - 4200:80
     networks:
-      - tp-network
+      - airports-network
