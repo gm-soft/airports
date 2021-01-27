@@ -1,0 +1,41 @@
+version: "3.4"
+
+networks:
+  tp-network:
+    driver: bridge
+
+services:
+  backend:
+    container_name: tp-backend
+    image: tp/backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_Kestrel__Certificates__Default__Password: password
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetapp.pfx
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:5001
+      ASPNETCORE_HTTPS_PORT: 5001
+    ports:
+      - 5001:5001
+    networks:
+      - tp-network
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  
+  frontend:
+    container_name: tp-frontend
+    image: tp/frontend
+    depends_on:
+      - backend
+    build:
+      context: ./src
+      dockerfile: Dockerfile_Frontend
+    ports:
+      - 4200:80
+    networks:
+      - tp-network
