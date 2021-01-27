@@ -22,7 +22,7 @@ namespace Airports.WebHost.Controllers
         [HttpGet("{code}")]
         public Task<Airport> GetAsync(string code) => _airports.ByCodeAsync(code);
 
-        [HttpGet("difference")]
+        [HttpPost("difference")]
         public Task<Difference> DifferenceAsync([FromBody] DifferenceBetweenAirportsRequest request)
             => _airports.DifferenceAsync(request);
     }
