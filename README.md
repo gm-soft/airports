@@ -1,15 +1,21 @@
-# Developer hiring test
+# Distance
 
-Please find attached the test assignment and the assessment criteria below:
+This is an application to show a distance between two airports. User should type IATA code of the airports and then the app will show the distance measured in miles.
 
-- качество кода:
-- аккуратность:
-- отказоустойчивость:
-- кеш:
-- тестируемость кода\тесты:
-- бонусные баллы:
+## How it works
+
+![gif](airports.gif)
 
 ## How to start the app:
 
 1. Execute `run.ps1` script
-2. Open SPA via [http://localhost:4200](http://localhost:4200)
+2. Wait for it
+3. Open SPA via [http://localhost:4200](http://localhost:4200)
+
+All you need to run the app will be containerized, so you will not have to install smth or run your IDEs.
+
+## What inside:
+
+- .net 5
+- Angular 11
+- Dockerfile
