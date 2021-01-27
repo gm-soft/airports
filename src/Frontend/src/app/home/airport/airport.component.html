@@ -1,0 +1,9 @@
+<div class="card" *ngIf="airport!=null">
+    <div class="card-body">
+      <h5 class="card-title">{{ airport.iata }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ airport.city }}, {{ airport.country }}</h6>
+      <p class="card-text">
+          <app-location [location]="airport.location"></app-location>
+        </p>
+    </div>
+  </div>
