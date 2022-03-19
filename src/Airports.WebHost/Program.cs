@@ -1,5 +1,12 @@
+using Airports.WebHost.Domain.Airports;
+using Airports.WebHost.Domain.Infrastructure;
+using Airports.WebHost.Middlewares.Error;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Airports.WebHost
 {
@@ -7,14 +14,14 @@ namespace Airports.WebHost
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-        }
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            var startup = new Startup(builder.Configuration);
+            startup.ConfigureServices(builder.Services);
+            WebApplication app = builder.Build();
+            startup.Configure(app, app.Environment);
+
+            app.Run();
+        }
     }
 }
