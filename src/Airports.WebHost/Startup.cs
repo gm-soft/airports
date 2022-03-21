@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 
 namespace Airports.WebHost
 {
@@ -31,6 +33,8 @@ namespace Airports.WebHost
                                         ?? throw new ArgumentException("There is no url for airports api"));
             });
 
+            services.AddLogging();
+
             services
                 .AddScoped<IApi, TeleportApi>()
                 .AddScoped<IAirportService, AirportService>();
@@ -48,7 +52,7 @@ namespace Airports.WebHost
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger logger)
         {
             if (env.IsDevelopment())
             {
